@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <head>
 
     <meta charset="utf-8">
@@ -24,6 +24,8 @@
     <link href="/assets/css/plugins/c3/c3.min.css" rel="stylesheet">
     <link href="/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
     <link href="/assets/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+    <link href="/assets/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="/assets/css/plugins/dropzone/dropzone.css" rel="stylesheet">
 
 </head>
 
@@ -44,10 +46,10 @@
                         </div>
                     </li>
                     <li id="MM1">
-                        <a href="demology"><i class="fa fa-user"></i> <span class="nav-label">浏览</span><span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label">浏览</span><span class="fa arrow"></span></a>
                     </li>
                     <li id="MM2">
-                        <a href="bodycheck"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">检索</span><span class="fa arrow"></span></a>
+                        <a href="search"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">检索</span><span class="fa arrow"></span></a>
                     </li>
                 </ul>
             </div>

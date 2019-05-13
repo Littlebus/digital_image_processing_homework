@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BrowseImageController;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,3 +14,5 @@ use App\Http\Controllers\BrowseImageController;
 */
 
 Route::get('/', 'BrowseImageController@browseimage');
+Route::get('/search', 'searchImageController@searchimage');
+Route::post('/upload', 'searchImageController@uploadfile');
