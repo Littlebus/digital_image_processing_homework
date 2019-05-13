@@ -42,27 +42,28 @@ Bilinear-CNN是一种细粒度分类方法，其主要思想是结合不同维�
 
 ## 使用方法
 
-首先安装
+### 要求:
 - `torch>=1.0`
+- `flask`
 - `php>7`
 - `composer`
-- `flask`
 - `mysql>=5.7`
 
-下载项目:
-
+### 下载项目
 ```shell
 git clone git@github.com:Littlebus/digital_image_processing_homework.git
 cd digital_image_processing_homework
 composer install
 ```
-之后需要配置数据库:
+
+### 配置数据库
 ```shell
 cp .env.example .env
 vim .env
 ```
+将其中SQL设置为自己的数据。
 
-## 数据
+### 数据库迁移
 将CUB_200_2011中的images移动到`public/assets/img`下并重命名为`birds`
 之后在根目录执行
 ```shell
@@ -70,11 +71,11 @@ php artisan migrate
 php artisan key:generate
 ```
 
-接下来分别运行服务:
+### 运行服务
 ```shell
 php artisan serve
 cd flask
-FLASK_APP=server flask run
+FLASK_APP=server.py flask run
 ```
 最后访问`http://127.0.0.1:8000`即可。
 
