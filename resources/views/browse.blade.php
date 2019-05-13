@@ -13,19 +13,24 @@
                 <div class="ibox-content">
 
                     <h2>Image Browsers Gallery</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <select class="select2_demo_1 form-control" name="subclass" id="subclass">
-                                    <option></option>
-                                </select>
+                    <form method="get">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <select class="select2_demo_1 form-control" name="subclass" id="subclass">
+                                        @foreach ($classes as $class)
+                                        <option value='{{ $class->class_id }}'>{{ $class->class_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;查询</button>
                         </div>
-                    </div>
+                    </form>
                     <div class="lightBoxGallery">
                         @if($images)
                         @foreach($images as $image)
-                        <a href="{{$image->path}}" title="{{$image->title}}" data-gallery=""><img src="{{$image->path}}"></a>
+                        <a href="{{$image->file_path}}" title="{{$image->subclass}}" data-gallery=""><img src="{{$image->file_path}}"></a>
                         @endforeach
                         @endif
                         <!-- <a href="assets/img/gallery/1.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/1s.jpg"></a>

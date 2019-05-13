@@ -28,6 +28,8 @@ class LoadImagesInfo extends Migration
             );
             $class_dir = $dir.'/'.$subclass;
             $images = scandir($class_dir);
+            array_shift($images);
+            array_shift($images);
             foreach($images as $image){
                 DB::table('birdimage')->insert(
                     ['subclass' => $class_name, 'class_id' => $class_id, 'file_path' => 'assets/img/birds/'.$subclass.'/'.$image]
