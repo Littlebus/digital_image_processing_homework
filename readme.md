@@ -1,28 +1,8 @@
 <p align="center">
-<svg viewBox="328 355 335 276" xmlns="http://www.w3.org/2000/svg" width="100" height="150">
-  <path d="
-    M 630, 425
-    A 195, 195 0 0 1 331, 600
-    A 142, 142 0 0 0 428, 570
-    A  70,  70 0 0 1 370, 523
-    A  70,  70 0 0 0 401, 521
-    A  70,  70 0 0 1 344, 455
-    A  70,  70 0 0 0 372, 460
-    A  70,  70 0 0 1 354, 370
-    A 195, 195 0 0 0 495, 442
-    A  67,  67 0 0 1 611, 380
-    A 117, 117 0 0 0 654, 363
-    A  65,  65 0 0 1 623, 401
-    A 117, 117 0 0 0 662, 390
-    A  65,  65 0 0 1 630, 425
-    Z"
-    style="fill:#3BA9EE;"/>
-</svg>
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTU3NzUyNDMzMTc5IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE5NjMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNOTYwIDIzNy45Yy0yNS4xIDM2LjYtNTYuMyA2OC43LTkyLjEgOTQuOSAwLjYgOCAwLjYgMTUuOSAwLjYgMjMuOSAwIDI0Mi44LTE4NC44IDUyMi41LTUyMi41IDUyMi41LTEwNCAwLTIwMC43LTMwLjEtMjgyLTgyLjUgMTQuOCAxLjcgMjkgMi4zIDQ0LjQgMi4zIDg1LjggMCAxNjQuOS0yOSAyMjgtNzguNS03OC42LTEuNC0xNDcuNS01Mi42LTE3MS43LTEyNy40IDExLjQgMS43IDIyLjcgMi44IDM0LjcgMi44IDE2LjUgMCAzMy0yLjMgNDguMy02LjMtODUuNy0xNy4zLTE0Ny4zLTkyLjctMTQ3LjMtMTgwLjJ2LTIuM2MyNS40IDE0LjIgNTMuOSAyMi4yIDgzIDIzLjMtNTEuMi0zNC4xLTgxLjktOTEuNS04MS45LTE1Mi45IDAtMzQuMSA5LjEtNjUuNCAyNS05Mi43QzIxOS44IDI5OS42IDM1Ny40IDM2OS41IDUwNS4xIDM3N2MtMi45LTEzLjgtNC41LTI3LjktNC41LTQyLjEgMC00OC43IDE5LjMtOTUuNCA1My44LTEyOS45IDM0LjQtMzQuNCA4MS4yLTUzLjggMTI5LjktNTMuOCA1MC44LTAuMSA5OS40IDIwLjkgMTM0LjIgNTggNDEuMS03LjkgODAuNi0yMi45IDExNi41LTQ0LjRBMTgzLjQ1IDE4My40NSAwIDAgMSA4NTQuMyAyNjZjMzYuOS0zLjcgNzIuNy0xMy45IDEwNS43LTI4LjF6IG0wIDAiIGZpbGw9IiMwMEFDRUQiIHAtaWQ9IjE5NjQiPjwvcGF0aD48L3N2Zz4=" alt="这只是一只鸟">
 </p>
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+
+# 鸟类检索库
 
 ## 关于本项目
 
@@ -93,4 +73,4 @@ digital_image_processing_homework/flask>FLASK_APP=server flask run
 
 ## 协议
 
-本项目基于以下开源协议 [MIT license](https://opensource.org/licenses/MIT).
+本项目基于以下开源协议 [GPL-3.0 license](https://opensource.org/licenses/GPL-3.0).

@@ -38,11 +38,11 @@
                         <div>
                             <a href="/">
                                 <span class="clear"> <span class="block m-t-xs">
-                                        <h2>鸟类数据库</h2>
+                                        <h2>鸟类检索库</h2>
                                     </span></span> </a>
                         </div>
                         <div class="logo-element">
-                            鸟类查询数据库
+                            鸟类检索数据库
                         </div>
                     </li>
                     <li id="MM1">
