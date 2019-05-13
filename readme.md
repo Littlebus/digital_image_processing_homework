@@ -61,12 +61,23 @@ composer install
 cp .env.example .env
 vim .env
 ```
-接下来分别运行服务:
+
+## 数据
+将CUB_200_2011中的images移动到`public/assets/img`下并重命名为`birds`
+之后在根目录执行
+```shell
+php artisan migrate
+php artisan key:generate
 ```
-digital_image_processing_homework:user>php artisan serve
-digital_image_processing_homework/flask>FLASK_APP=server flask run
+
+接下来分别运行服务:
+```shell
+php artisan serve
+cd flask
+FLASK_APP=server flask run
 ```
 最后访问`http://127.0.0.1:8000`即可。
+
 
 ## 部署
 使用uWSGI，nginx等部署。
