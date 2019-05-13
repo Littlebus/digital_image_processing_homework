@@ -44,20 +44,12 @@
             <div class="ibox float-e-margins">
 
                 <div class="ibox-content">
-                    <h2>mAP@1=66.4%<br/>
+                    <h2 id="map">mAP@1=66.4%<br/>
                         mAP@50=76.1%</h2>
                     <div class="lightBoxGallery">
+                        <div id="gallery">
+                        </div>
                         <!-- TODO:添加缩略图 -->
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-                        <a href="assets/img/gallery/11.jpg" title="Image from Unsplash" data-gallery=""><img src="assets/img/gallery/11s.jpg"></a>
-
                         <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
                         <div id="blueimp-gallery" class="blueimp-gallery">
                             <div class="slides"></div>
@@ -106,6 +98,7 @@
 
 <!-- Page-Level Scripts -->
 <script src="/assets/js/plugins/dropzone/dropzone.js"></script>
+<script src="/assets/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
 
 <script>
     $('#MM2').addClass("active");
@@ -127,8 +120,24 @@
                     e.stopPropagation();
                     myDropzone.processQueue();
                 });
-                this.on("sendingmultiple", function() {});
-                this.on("successmultiple", function(files, response) {});
+                this.on("success", function(e) {
+                    // console.log('sending multiple', e.xhr.response)
+                    let response = JSON.parse(e.xhr.response)
+                    let files = response['files']
+                    let map1 = response['map@1']
+                    let map50 = response['map@50']
+                    files = files.map(function(file){
+                        return `<a href="${file}" title="Image from Unsplash" data-gallery=""><img src="${file}"></a>`
+                    })
+                    let html_str = files.join('');
+                    $('#gallery').html(html_str)
+                    $('#map').html(`mAP@1:${map1}<br/>mAP@50:${map50}`)
+                    console.log(`mAP@1:${map1}<br/>mAP@50:${map50}`)
+                    console.log(html_str)
+                });
+                this.on("successmultiple", function(files, response) {
+                    console.log('multiple success')
+                });
                 this.on("errormultiple", function(files, response) {});
             }
 

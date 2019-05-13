@@ -1,74 +1,96 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
+<p align="center">
+<svg viewBox="328 355 335 276" xmlns="http://www.w3.org/2000/svg" width="100" height="150">
+  <path d="
+    M 630, 425
+    A 195, 195 0 0 1 331, 600
+    A 142, 142 0 0 0 428, 570
+    A  70,  70 0 0 1 370, 523
+    A  70,  70 0 0 0 401, 521
+    A  70,  70 0 0 1 344, 455
+    A  70,  70 0 0 0 372, 460
+    A  70,  70 0 0 1 354, 370
+    A 195, 195 0 0 0 495, 442
+    A  67,  67 0 0 1 611, 380
+    A 117, 117 0 0 0 654, 363
+    A  65,  65 0 0 1 623, 401
+    A 117, 117 0 0 0 662, 390
+    A  65,  65 0 0 1 630, 425
+    Z"
+    style="fill:#3BA9EE;"/>
+</svg>
+</p>
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## 关于本项目
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+数字图像处理是北京大学信息科学技术学院的一门课。
+本项目是该课的大作业。
+使用了以下技术:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Bilinear-CNN](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Lin_Bilinear_CNN_Models_ICCV_2015_paper.pdf).
+- [laravel](https://laravel.com).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 特征提取 对象检测 部件检测
+Bilinear-CNN是一种细粒度分类方法，其主要思想是结合不同维度特征进行分类，既保留全局特征也能反映局部细微特征。
+<p align="center"><img src="http://vis-www.cs.umass.edu/bcnn/docs/teaser-bcnn.png"></p>
+如图所示，Bilinear分别利用两个CNN提取不同维度特征，使用bilinear pooling聚合两个特征，最后使用多分类器实现分类。
 
-## Learning Laravel
+其中，我们使用了两个 [VGG-16](https://arxiv.org/pdf/1409.1556.pdf) 提取图像特征，用2层softmax进行分类。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+因为Bilinear-CNN能够很好地提取到图片的部件特征，并没有使用对象检测和部件检测。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 特征提取
 
-## Laravel Sponsors
+我们尝试使用了VGG输出、bilinear pooling输出、softmax输出作为分类特征，最终在使用bilinear pooling特征时有最高的mAP。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 相似度计算
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+我们尝试使用了sigmoid、cosine similarity、Euclidean distance计算相似度。综合计算速度和准确率，三者效果差不多。
 
-## Contributing
+## mAP结果
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**mAP@1=60**
 
-## Security Vulnerabilities
+**mAP@50=65**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## UI界面
 
-## License
+界面使用web网页，使用laravel+jQuery实现了浏览和查询的功能。
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# digital_image_processing_homework
-# digital_image_processing_homework
+## 使用方法
+
+首先安装
+- `torch>=1.0`
+- `php>7`
+- `composer`
+- `flask`
+- `mysql>=5.7`
+
+下载项目:
+
+```shell
+git clone git@github.com:Littlebus/digital_image_processing_homework.git
+cd digital_image_processing_homework
+composer install
+```
+之后需要配置数据库:
+```shell
+cp .env.example .env
+vim .env
+```
+接下来分别运行服务:
+```
+digital_image_processing_homework:user>php artisan serve
+digital_image_processing_homework/flask>FLASK_APP=server flask run
+```
+最后访问`http://127.0.0.1:8000`即可。
+
+## 部署
+使用uWSGI，nginx等部署。
+
+## 协议
+
+本项目基于以下开源协议 [MIT license](https://opensource.org/licenses/MIT).
