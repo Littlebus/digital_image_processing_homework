@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\BrowseImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +12,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BrowseImageController@browseimage');
