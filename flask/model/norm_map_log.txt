@@ -1,0 +1,4 @@
+map of top 1: 0.5930273
+map of top 5: 0.6552821
+map of top 10: 0.6129779
+map of top 50: 0.45972115

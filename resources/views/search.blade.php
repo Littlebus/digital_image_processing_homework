@@ -127,7 +127,7 @@
                     let map1 = response['map@1']
                     let map50 = response['map@50']
                     files = files.map(function(file){
-                        return `<a href="${file}" title="Image from Unsplash" data-gallery=""><img src="${file}"></a>`
+                        return `<a href="/assets/img/birds/${file}" title="Image from Unsplash" data-gallery=""><img src="/assets/img/birds/${file}"></a>`
                     })
                     let html_str = files.join('');
                     $('#gallery').html(html_str)
