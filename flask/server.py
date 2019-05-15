@@ -3,7 +3,6 @@ from flask import request
 import random
 import json
 app = Flask(__name__)
-from model.bilinear_cnn_fc import *
 from model.evaluate import *
 
 model_path = 'model/vgg_16_epoch_32.pth'
