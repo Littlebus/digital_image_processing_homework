@@ -2,7 +2,7 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Image Browsers Gallery</h2>
+        <h2>浏览检索库</h2>
     </div>
 </div>
 <div class="wrapper wrapper-content">
@@ -12,7 +12,7 @@
 
                 <div class="ibox-content">
 
-                    <h2>Image Browsers Gallery</h2>
+                    <h2>选择子类</h2>
                     <form method="get">
                         <div class="row">
                             <div class="col-sm-4">
@@ -91,7 +91,6 @@
     @if($classid)
     $("#subclass").val({{$classid}})
     @endif
-    $('#subclass')
     $(document).ready(function() {
         $('.footable').footable();
 
@@ -99,8 +98,6 @@
             placeholder: "选择一个子类",
             allowClear: true
         });
-
-
     });
 </script>
 @endsection

@@ -2,10 +2,10 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Image Search</h2>
+        <h2>图像检索</h2>
     </div>
 </div>
-<div class="wrapper wrapper-content animated fadeIn">
+<div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -15,15 +15,6 @@
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="upload">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="form_file_upload.html#">Config option 1</a>
-                                </li>
-                                <li><a href="form_file_upload.html#">Config option 2</a>
-                                </li>
-                            </ul> -->
                         <a class="close-link">
                             <i class="fa fa-times"></i>
                         </a>
@@ -33,7 +24,7 @@
                     <form id="my-awesome-dropzone" class="dropzone" action="upload" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="dropzone-previews"></div>
-                        <button type="submit" class="btn btn-primary pull-right">Submit this form!</button>
+                        <button type="submit" class="btn btn-primary pull-right">开始检索!</button>
                     </form>
                 </div>
             </div>
@@ -43,14 +34,11 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
 
-                <div class="ibox-content">
-                    <h2 id="map">mAP@1=66.4%<br/>
-                        mAP@50=76.1%</h2>
+                <div class="ibox-content" id="gallery_zone">
+                    <h2 id="map"></h2>
                     <div class="lightBoxGallery">
                         <div id="gallery">
                         </div>
-                        <!-- TODO:添加缩略图 -->
-                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
                         <div id="blueimp-gallery" class="blueimp-gallery">
                             <div class="slides"></div>
                             <h3 class="title"></h3>
@@ -103,7 +91,7 @@
 <script>
     $('#MM2').addClass("active");
     $(document).ready(function() {
-
+        $("#gallery_zone").hide()
         Dropzone.options.myAwesomeDropzone = {
 
             autoProcessQueue: false,
@@ -121,7 +109,7 @@
                     myDropzone.processQueue();
                 });
                 this.on("success", function(e) {
-                    // console.log('sending multiple', e.xhr.response)
+                    $("#gallery_zone").show()
                     let response = JSON.parse(e.xhr.response)
                     let files = response['files']
                     let map1 = response['map@1']
@@ -129,9 +117,10 @@
                     files = files.map(function(file){
                         let file_length = file.lastIndexOf(".")
                         let name = file.substring(0, file_length)
+                        let subclass = name.substring(name.lastIndexOf(".")+1, name.lastIndexOf("/"))
                         let ext = file.substring(file_length + 1,)
                         let thumbnail = name + 's.' + ext
-                        return `<a href="/assets/img/birds/${file}" title="Image from Unsplash" data-gallery=""><img src="/assets/img/thumbnails/${thumbnail}"></a>`
+                        return `<a href="/assets/img/birds/${file}" title="${subclass}" data-gallery=""><img src="/assets/img/thumbnails/${thumbnail}"></a>`
                     })
                     let html_str = files.join('');
                     $('#gallery').html(html_str)

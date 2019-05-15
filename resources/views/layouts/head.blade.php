@@ -46,10 +46,10 @@
                         </div>
                     </li>
                     <li id="MM1">
-                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label">浏览</span><span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-book"></i> <span class="nav-label">浏览</span><span class="fa arrow"></span></a>
                     </li>
                     <li id="MM2">
-                        <a href="search"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">检索</span><span class="fa arrow"></span></a>
+                        <a href="search"><i class="fa fa-search"></i> <span class="nav-label">检索</span><span class="fa arrow"></span></a>
                     </li>
                 </ul>
             </div>
