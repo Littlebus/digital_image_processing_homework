@@ -48,6 +48,7 @@ Bilinear-CNN是一种细粒度分类方法，其主要思想是结合不同维�
 - `php>7`
 - `composer`
 - `mysql>=5.7`
+- `PIL`
 
 ### 下载项目
 ```shell
@@ -67,6 +68,7 @@ vim .env
 将CUB_200_2011中的images移动到`public/assets/img`下并重命名为`birds`
 之后在根目录执行
 ```shell
+python init.py
 php artisan migrate
 php artisan key:generate
 ```
