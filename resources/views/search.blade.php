@@ -127,7 +127,11 @@
                     let map1 = response['map@1']
                     let map50 = response['map@50']
                     files = files.map(function(file){
-                        return `<a href="/assets/img/birds/${file}" title="Image from Unsplash" data-gallery=""><img src="/assets/img/birds/${file}"></a>`
+                        let file_length = file.lastIndexOf(".")
+                        let name = file.substring(0, file_length)
+                        let ext = file.substring(file_length + 1,)
+                        let thumbnail = name + 's.' + ext
+                        return `<a href="/assets/img/birds/${file}" title="Image from Unsplash" data-gallery=""><img src="/assets/img/thumbnails/${thumbnail}"></a>`
                     })
                     let html_str = files.join('');
                     $('#gallery').html(html_str)
@@ -140,7 +144,6 @@
                 });
                 this.on("errormultiple", function(files, response) {});
             }
-
         }
     });
 </script>

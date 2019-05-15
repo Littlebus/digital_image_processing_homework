@@ -12,7 +12,7 @@ class searchImageController extends Controller
     public function uploadfile(Request $request){
         $res = $request->file('file')[0]->storeAs('./tmp', $request->file('file')[0]->getClientOriginalName());
         $path = getcwd().'/../storage/app/'.$res;
-        $response = file_get_contents("http://127.0.0.1:5000?filepath=".$path);
+        $response = file_get_contents("http://127.0.0.1:4000?filepath=".$path);
         return $response;
     }
 }
