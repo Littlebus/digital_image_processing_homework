@@ -30,7 +30,7 @@
                     <div class="lightBoxGallery">
                         @if($images)
                         @foreach($images as $image)
-                        <a href="{{$image->file_path}}" title="{{$image->subclass}}" data-gallery=""><img src="{{$image->file_path}}"></a>
+                        <a href="{{$image->file_path}}" title="{{$image->subclass}}" data-gallery=""><img src="{{$image->thumbnail_path}}"></a>
                         @endforeach
                         @endif
                         <!-- TODO:添加缩略图 -->
@@ -88,6 +88,10 @@
 
 <script>
     $('#MM1').addClass("active");
+    @if($classid)
+    $("#subclass").val({{$classid}})
+    @endif
+    $('#subclass')
     $(document).ready(function() {
         $('.footable').footable();
 
@@ -95,6 +99,8 @@
             placeholder: "选择一个子类",
             allowClear: true
         });
+
+
     });
 </script>
 @endsection
