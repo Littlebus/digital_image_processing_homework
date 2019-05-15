@@ -9,13 +9,15 @@ def generate_feature_file(manager,path,data_type):
     if os.path.exists(path):
         print('feature file already exists')
         return
-    image_dir = os.path.join(os.path.dirname(os.getcwd()),'data/cub200/raw/CUB_200_2011/images')
+    image_dir = '../public/assets/img/birds'
     #print(image_dir)
-    image_list = np.genfromtxt(os.path.join(os.path.dirname(image_dir),'images.txt'),dtype=str)
-    train_test_split = np.genfromtxt(os.path.join(os.path.dirname(image_dir),'train_test_split.txt'),dtype=str)
+    
+    image_list = np.genfromtxt('../public/assets/attributes/images.txt',dtype=str)
+    train_test_split = np.genfromtxt('../public/assets/attributes/train_test_split.txt',dtype=str)
     record_list = []
     count = 0
     
+    print('generating')
     for line in image_list:
         index = int(line[0]) - 1
         
